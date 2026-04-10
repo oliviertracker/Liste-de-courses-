@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ma Liste de Courses Leclerc</title>
+    <style>
+        :root {
+            --bg-color: #f2f2f7;
+            --card-bg: #ffffff;
+            --text-main: #1c1c1e;
+            --text-secondary: #8e8e93;
+            --green-accent: #34c759;
+            --red-accent: #ff3b30;
+            --blue-accent: #007aff;
+            --border-color: #c7c7cc;
+        }
+
+        body { 
+            font-family: -apple-system, system-ui, sans-serif; 
+            background-color: var(--bg-color); 
+            margin: 0; 
+            padding: 20px;
+            color: var(--text-main);
+            padding-bottom: 60px; /* Espace pour le panier en bas */
+        }
+
+        /* En-tête (Heure, etc.) - Juste pour simuler l'écran */
+        .status-bar { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 15px; font-weight: 600; padding: 0 5px; }
+
+        .category-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        h2 { 
+            font-size: 17px; 
+            margin: 0; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+        
+        /* Icônes et Couleurs Spécifiques */
+        h2::before { margin-right: 10px; font-size: 1.1em; }
+        .fruits h2 { color: #f29a2e; } 
+        .frais h2 { color: var(--green-accent); }
+        .frais h2::before { content: "🥛"; }
+        .maison h2 { color: #ff3b30; }
+        .maison h2::before { content: "🧼"; }
+
+        .add-btn { background: #eee; border: none; border-radius: 50%; width: 28px; height: 28px; font-weight: bold; cursor: pointer; color: #555; }
+
+        .item-list { list-style: none; padding: 0; margin: 0; }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f2f2f7;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .item:last-child { border-bottom: none; }
+
+        input[type="checkbox"] {
+            width: 22px;
+            height: 22px;
+            margin-right: 12px;
+            accent-color: var(--blue-accent);
+            cursor: pointer;
+        }
+
+        span { font-size: 17px; }
+
+        /* Style spécifique pour les articles ACHETÉS (barrés et grisés) */
+        .purchased span {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+        }
+
+        /* SECTION PANIER (EN BAS) */
+        #panier-section {
+            border: 2px dashed #a1a1a1;
+            background-color: transparent;
+            box-shadow: none;
+            margin-top: 30px;
+        }
+        #panier-section h2 { color: #666; border-bottom: none; }
+        #panier-section h2::before { content: "🛒"; margin-right: 10px; }
+
+    </style>
+</head>
+<body>
+
+<div class="status-bar">
+    <span>09:58</span>
+    <span>Leclerc</span>
+    <span>📶 🔋</span>
+</div>
+
+<div id="main-content">
+    
+    <div class="category-card" data-cat="divers">
+        <ul class="item-list" id="list-divers">
+            <li class="item"><input type="checkbox" onchange="moveToBasket(this)"><span>Lait de coco</span></li>
+            <li class="item"><input type="checkbox" onchange="moveToBasket(this)"><span>Pâtes</span></li>
+            <li class="item"><input type="checkbox" onchange="moveToBasket(this)"><span>Riz</span></li>
+        </ul>
+    </div>
+
+    <div class="category-card frais" data-cat="frais">
+        <h2>Frais & Végétal <button class="add-btn">+</button></h2>
+        <ul class="item-list" id="list-frais">
+            <li class="item"><input type="checkbox" onchange="moveToBasket(this)"><span>Œufs</span></li>
+            <li class="item"><input type="checkbox" onchange="moveToBasket(this)"><span>Yaourts</span></li>
+        </ul>
+    </div>
+
+    <div class="category-card maison" data-cat="maison">
+        <h2>Maison & Animaux <button class="add-btn">+</button></h2>
+        <ul class="item-list" id="list-maison">
+            <li class="item"><input type="checkbox" onchange="moveToBasket(this)"><span>Lessive</span></li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="category-card" id="panier-section">
+    <h2>Mon Panier (À acheter)</h2>
+    <ul class="item-list" id="basket-list">
+        <li class="item purchased"><input type="checkbox" checked onchange="returnToCategory(this)"><span>Croquettes</span></li>
+        <li class="item purchased"><input type="checkbox" checked onchange="returnToCategory(this)"><span>Tofu</span></li>
+    </ul>
+</div>
+
+<script>
+    // --- SCRIPTS JS ---
+
+    // 1. Déplacer de la catégorie vers le Panier (Non acheté)
+    function moveToBasket(checkbox) {
+        if (checkbox.checked) {
+            const itemElement = checkbox.parentElement;
+            const basketList = document.getElementById('basket-list');
+            
+            // On le retire de la liste principale
+            itemElement.remove();
+            
+            // On change le comportement de la case à cocher pour qu'elle 'achète' l'article
+            checkbox.setAttribute('onchange', 'confirmPurchase(this)');
+            
+            // On l'ajoute au panier, MAIS non coché et non barré
+            checkbox.checked = false; // On décoche pour l'état 'À ACHETER'
+            basketList.appendChild(itemElement);
+        }
+    }
+
+    // 2. Confirmer l'achat (Dans le panier)
+    function confirmPurchase(checkbox) {
+        const itemElement = checkbox.parentElement;
+        if (checkbox.checked) {
+            // L'article est coché DANS le panier = acheté
+            itemElement.classList.add('purchased');
+        } else {
+            // L'article est décoché DANS le panier = pas acheté, reste dans le panier
+            itemElement.classList.remove('purchased');
+        }
+    }
+
+    // (Optionnel) Permettre de remettre un article dans sa catégorie d'origine 
+    // en décochant un article 'acheté'. Ce code n'est pas activé par défaut.
+    function returnToCategory(checkbox) {
+        // ... Logique complexe pour se souvenir de la catégorie d'origine ...
+    }
+
+</script>
+
+</body>
+</html>
 
