@@ -210,7 +210,22 @@ const coursesRef = collection(db, "courses");
 window.ajouterCourseFirebase = async (nom) => {
  await addDoc(coursesRef, { nom: nom, date: Date.now() });
 };
+// Écouter la base de données et afficher les articles sur l'écran
+onSnapshot(query(coursesRef, orderBy("date", "desc")), (snapshot) => {
+   // IMPORTANT : Remplace 'liste-courses' par l'ID réel de ta liste dans ton HTML
+   const container = document.getElementById('basket-list');
+   if (container) {
+       container.innerHTML = "";
+       snapshot.forEach((doc) => {
+           const item = doc.data();
+           const li = document.createElement('li');
+           li.textContent = item.nom;
+           container.appendChild(li);
+       });
+   }
+});
 
+Envoyé 
 </script>
 </body>
 </html>
