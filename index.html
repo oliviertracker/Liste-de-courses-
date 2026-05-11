@@ -6,431 +6,83 @@
 <title>Ma Liste Leclerc</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
 :root {
-  --blue: #007aff;
-  --green: #34c759;
-  --red: #ff3b30;
-  --orange: #ff9500;
-  --bg: #f2f2f7;
-  --card: #ffffff;
-  --text: #1c1c1e;
-  --muted: #8e8e93;
-  --sep: #e5e5ea;
+  --blue: #007aff; --green: #34c759; --red: #ff3b30;
+  --bg: #f2f2f7; --card: #ffffff; --text: #1c1c1e; --muted: #8e8e93; --sep: #e5e5ea;
 }
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  padding-bottom: 90px;
-}
-
-/* &#9472;&#9472; HEADER &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.header {
-  background: var(--blue);
-  color: white;
-  padding: 55px 20px 15px;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  box-shadow: 0 2px 12px rgba(0,122,255,0.35);
-}
-.header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding-bottom: 90px; }
+.header { background: var(--blue); color: white; padding: 55px 20px 15px; position: sticky; top: 0; z-index: 50; box-shadow: 0 2px 12px rgba(0,122,255,0.35); }
+.header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .header-title { font-size: 24px; font-weight: 700; }
-.settings-btn {
-  background: rgba(255,255,255,0.2);
-  border: none;
-  color: white;
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-}
-.total-bar {
-  background: rgba(255,255,255,0.18);
-  border-radius: 14px;
-  padding: 10px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.settings-btn { background: rgba(255,255,255,0.2); border: none; color: white; width: 36px; height: 36px; border-radius: 50%; font-size: 18px; cursor: pointer; }
+.total-bar { background: rgba(255,255,255,0.18); border-radius: 14px; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; }
 .total-label { font-size: 14px; opacity: 0.85; }
 .total-amount { font-size: 22px; font-weight: 700; }
-
-/* &#9472;&#9472; MAIN &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
 main { padding: 16px; }
-
 .cat-section { margin-bottom: 20px; }
-.cat-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  padding: 0 4px;
-}
-.cat-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 600;
-}
-.cat-add {
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px; height: 30px;
-  font-size: 22px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 400;
-}
-.items-card {
-  background: var(--card);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-}
-.empty-cat {
-  padding: 14px 16px;
-  color: var(--muted);
-  font-size: 14px;
-  text-align: center;
-}
-
-/* &#9472;&#9472; ITEM ROW &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
+.cat-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; padding: 0 4px; }
+.cat-title { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; }
+.cat-add { color: white; border: none; border-radius: 50%; width: 30px; height: 30px; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.items-card { background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.empty-cat { padding: 14px 16px; color: var(--muted); font-size: 14px; text-align: center; }
 .item-wrap { position: relative; overflow: hidden; }
 .item-wrap:not(:last-child) .item-row { border-bottom: 1px solid var(--sep); }
-
-/* Delete revealed button behind the row */
-.item-delete-bg {
-  position: absolute;
-  right: 0; top: 0; bottom: 0;
-  background: var(--red);
-  display: flex;
-  align-items: center;
-  padding: 0 22px;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  gap: 6px;
-  cursor: pointer;
-  min-width: 90px;
-  justify-content: center;
-}
-
-.item-row {
-  display: flex;
-  align-items: center;
-  padding: 11px 14px;
-  gap: 11px;
-  background: var(--card);
-  position: relative;
-  transition: transform 0.2s ease;
-  user-select: none;
-  -webkit-user-select: none;
-}
+.item-delete-bg { position: absolute; right: 0; top: 0; bottom: 0; background: var(--red); display: flex; align-items: center; padding: 0 22px; color: white; font-size: 14px; font-weight: 600; cursor: pointer; min-width: 90px; justify-content: center; }
+.item-row { display: flex; align-items: center; padding: 11px 14px; gap: 11px; background: var(--card); position: relative; transition: transform 0.2s ease; user-select: none; -webkit-user-select: none; }
 .item-row.swiped { transform: translateX(-90px); }
 .item-row.checked { background: #fafafa; }
-
-.item-check {
-  width: 26px; height: 26px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: all 0.2s;
-  font-size: 14px;
-  font-weight: 700;
-  color: white;
-}
+.item-check { width: 26px; height: 26px; border-radius: 50%; border: 2px solid #ccc; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; transition: all 0.2s; font-size: 14px; font-weight: 700; color: white; }
 .item-check.on { background: var(--green); border-color: var(--green); }
-
-/* Tapping the info area opens edit sheet */
-.item-info {
-  flex: 1;
-  min-width: 0;
-  cursor: pointer;
-  padding: 2px 0;
-}
-.item-name {
-  font-size: 16px;
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+.item-info { flex: 1; min-width: 0; cursor: pointer; padding: 2px 0; }
+.item-name { font-size: 16px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .item-row.checked .item-name { text-decoration: line-through; color: var(--muted); }
 .item-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-
-.item-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 5px;
-  flex-shrink: 0;
-}
+.item-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
 .item-total { font-size: 15px; font-weight: 600; }
 .item-row.checked .item-total { color: var(--muted); }
-
-.qty-ctrl {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg);
-  border-radius: 10px;
-  padding: 2px 4px;
-}
-.qty-btn {
-  width: 28px; height: 28px;
-  border: none;
-  background: white;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--blue);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-  font-weight: 600;
-}
-.qty-val {
-  font-size: 15px;
-  font-weight: 700;
-  min-width: 22px;
-  text-align: center;
-}
-
-/* &#9472;&#9472; BOTTOM BAR &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.bottom-bar {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: var(--card);
-  border-top: 1px solid var(--sep);
-  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
-  display: flex;
-  gap: 10px;
-  z-index: 50;
-}
-.btn-scan {
-  flex: 1;
-  background: var(--blue);
-  color: white;
-  border: none;
-  border-radius: 13px;
-  padding: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-}
-.btn-reset {
-  background: var(--bg);
-  color: var(--text);
-  border: none;
-  border-radius: 13px;
-  padding: 14px 18px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-/* &#9472;&#9472; MODALS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 100;
-  align-items: flex-end;
-}
+.qty-ctrl { display: flex; align-items: center; gap: 6px; background: var(--bg); border-radius: 10px; padding: 2px 4px; }
+.qty-btn { width: 28px; height: 28px; border: none; background: white; border-radius: 8px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--blue); box-shadow: 0 1px 3px rgba(0,0,0,0.12); font-weight: 600; }
+.qty-val { font-size: 15px; font-weight: 700; min-width: 22px; text-align: center; }
+.bottom-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card); border-top: 1px solid var(--sep); padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); display: flex; gap: 10px; z-index: 50; }
+.btn-scan { flex: 1; background: var(--blue); color: white; border: none; border-radius: 13px; padding: 14px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.btn-reset { background: var(--bg); color: var(--text); border: none; border-radius: 13px; padding: 14px 18px; font-size: 18px; cursor: pointer; }
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 100; align-items: flex-end; }
 .overlay.open { display: flex; }
-.sheet {
-  background: var(--card);
-  border-radius: 20px 20px 0 0;
-  width: 100%;
-  padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: up 0.28s ease;
-}
+.sheet { background: var(--card); border-radius: 20px 20px 0 0; width: 100%; padding: 20px 20px calc(20px + env(safe-area-inset-bottom)); max-height: 90vh; overflow-y: auto; animation: up 0.28s ease; }
 @keyframes up { from { transform: translateY(100%); } to { transform: translateY(0); } }
-.handle {
-  width: 36px; height: 4px;
-  background: var(--sep);
-  border-radius: 2px;
-  margin: 0 auto 20px;
-}
+.handle { width: 36px; height: 4px; background: var(--sep); border-radius: 2px; margin: 0 auto 20px; }
 .sheet-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
-
 .fg { margin-bottom: 14px; }
-.flabel {
-  display: block;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
-}
-.finput, .fselect {
-  width: 100%;
-  padding: 12px 14px;
-  background: var(--bg);
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  color: var(--text);
-  font-family: inherit;
-  outline: none;
-  appearance: none;
-}
+.flabel { display: block; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.finput, .fselect { width: 100%; padding: 12px 14px; background: var(--bg); border: none; border-radius: 12px; font-size: 16px; color: var(--text); font-family: inherit; outline: none; appearance: none; }
 .frow { display: flex; gap: 10px; }
 .frow .fg { flex: 1; }
-
-.btn-ok {
-  width: 100%;
-  padding: 15px;
-  background: var(--blue);
-  color: white;
-  border: none;
-  border-radius: 14px;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 6px;
-  font-family: inherit;
-}
-.btn-del {
-  width: 100%;
-  padding: 14px;
-  background: #fff0f0;
-  color: var(--red);
-  border: none;
-  border-radius: 14px;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 8px;
-  font-family: inherit;
-}
-.btn-no {
-  width: 100%;
-  padding: 13px;
-  background: var(--bg);
-  color: var(--muted);
-  border: none;
-  border-radius: 14px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 8px;
-  font-family: inherit;
-}
-
-/* &#9472;&#9472; CATEGORY ORDER LIST (in settings) &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.cat-order-row {
-  display: flex;
-  align-items: center;
-  padding: 10px 12px;
-  background: var(--card);
-  border-radius: 10px;
-  margin-bottom: 6px;
-  gap: 10px;
-}
+.btn-ok { width: 100%; padding: 15px; background: var(--blue); color: white; border: none; border-radius: 14px; font-size: 17px; font-weight: 600; cursor: pointer; margin-top: 6px; font-family: inherit; }
+.btn-del { width: 100%; padding: 14px; background: #fff0f0; color: var(--red); border: none; border-radius: 14px; font-size: 17px; font-weight: 600; cursor: pointer; margin-top: 8px; font-family: inherit; }
+.btn-no { width: 100%; padding: 13px; background: var(--bg); color: var(--muted); border: none; border-radius: 14px; font-size: 16px; font-weight: 500; cursor: pointer; margin-top: 8px; font-family: inherit; }
+.cat-order-row { display: flex; align-items: center; padding: 10px 12px; background: var(--card); border-radius: 10px; margin-bottom: 6px; gap: 10px; }
 .cat-order-name { flex: 1; font-size: 15px; font-weight: 500; }
-.order-btn {
-  width: 32px; height: 32px;
-  background: var(--bg);
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  color: var(--blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.order-btn { width: 32px; height: 32px; background: var(--bg); border: none; border-radius: 8px; font-size: 16px; cursor: pointer; color: var(--blue); }
 .order-btn:disabled { opacity: 0.25; pointer-events: none; }
-
-/* &#9472;&#9472; SCANNER &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; */
-.scan-drop {
-  border: 2px dashed var(--sep);
-  border-radius: 16px;
-  padding: 30px 20px;
-  text-align: center;
-  cursor: pointer;
-  margin-bottom: 14px;
-}
+.scan-drop { border: 2px dashed var(--sep); border-radius: 16px; padding: 30px 20px; text-align: center; cursor: pointer; margin-bottom: 14px; }
 .scan-icon { font-size: 48px; }
 .scan-hint { color: var(--muted); font-size: 14px; margin-top: 8px; }
-.scan-preview {
-  width: 100%;
-  border-radius: 12px;
-  max-height: 200px;
-  object-fit: cover;
-  margin-bottom: 14px;
-  display: none;
-}
+.scan-preview { width: 100%; border-radius: 12px; max-height: 200px; object-fit: cover; margin-bottom: 14px; display: none; }
 .scan-status { text-align: center; padding: 16px 0; color: var(--muted); font-size: 15px; }
-.spinner {
-  width: 30px; height: 30px;
-  border: 3px solid var(--sep);
-  border-top-color: var(--blue);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin: 0 auto 10px;
-}
+.spinner { width: 30px; height: 30px; border: 3px solid var(--sep); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 10px; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
 .result-list { margin: 8px 0 14px; }
-.result-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--sep);
-}
+.result-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--sep); }
 .result-row:last-child { border-bottom: none; }
-.result-row input[type="checkbox"] {
-  width: 20px; height: 20px;
-  accent-color: var(--blue);
-  flex-shrink: 0;
-}
+.result-row input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--blue); flex-shrink: 0; }
 .result-name { font-size: 15px; font-weight: 500; }
 .result-sub { font-size: 13px; color: var(--muted); }
-
-.hint-text {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 6px;
-  line-height: 1.5;
-}
-.section-label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin: 20px 0 10px;
-}
+.hint-text { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+.section-label { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 20px 0 10px; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div class="header-row">
     <div class="header-title">&#128722; Ma Liste</div>
@@ -442,116 +94,73 @@ main { padding: 16px; }
   </div>
 </header>
 
-<main id="app">
-  <div class="scan-status">Chargement&#8230;</div>
-</main>
+<main id="app"><div class="scan-status">Chargement&#8230;</div></main>
 
-<!-- BOTTOM BAR -->
 <nav class="bottom-bar">
   <button class="btn-scan" onclick="openModal('receipt')">&#128247; Scanner un ticket de caisse</button>
-  <button class="btn-reset" title="Nouvelle liste" onclick="confirmReset()">&#128260;</button>
+  <button class="btn-reset" onclick="confirmReset()">&#128260;</button>
 </nav>
 
-<!-- &#9472;&#9472; MODAL : Ajouter article &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
 <div class="overlay" id="modal-add" onclick="backdropClose(event,'add')">
   <div class="sheet">
     <div class="handle"></div>
     <div class="sheet-title">Nouvel article</div>
-    <div class="fg">
-      <label class="flabel">Nom</label>
-      <input class="finput" id="a-nom" type="text" placeholder="ex : Yaourt ch&#232;vre vanille">
-    </div>
+    <div class="fg"><label class="flabel">Nom</label><input class="finput" id="a-nom" type="text" placeholder="ex : Yaourt ch&#232;vre vanille"></div>
     <div class="frow">
-      <div class="fg">
-        <label class="flabel">Prix (&#8364;)</label>
-        <input class="finput" id="a-prix" type="number" step="0.01" min="0" placeholder="0,00">
-      </div>
-      <div class="fg">
-        <label class="flabel">Unit&#233;s/lot</label>
-        <input class="finput" id="a-cond" type="number" min="1" value="1">
-      </div>
+      <div class="fg"><label class="flabel">Prix (&#8364;)</label><input class="finput" id="a-prix" type="number" step="0.01" min="0" placeholder="0,00"></div>
+      <div class="fg"><label class="flabel">Unit&#233;s/lot</label><input class="finput" id="a-cond" type="number" min="1" value="1"></div>
     </div>
-    <div class="fg">
-      <label class="flabel">Cat&#233;gorie</label>
-      <select class="fselect" id="a-cat"></select>
-    </div>
+    <div class="fg"><label class="flabel">Cat&#233;gorie</label><select class="fselect" id="a-cat"></select></div>
     <button class="btn-ok" onclick="saveArticle()">Ajouter &#224; la liste</button>
     <button class="btn-no" onclick="closeModal('add')">Annuler</button>
   </div>
 </div>
 
-<!-- &#9472;&#9472; MODAL : Modifier article &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
 <div class="overlay" id="modal-edit" onclick="backdropClose(event,'edit')">
   <div class="sheet">
     <div class="handle"></div>
-    <div class="sheet-title">Modifier l'article</div>
+    <div class="sheet-title">Modifier l&#8217;article</div>
     <input type="hidden" id="e-id">
-    <div class="fg">
-      <label class="flabel">Nom</label>
-      <input class="finput" id="e-nom" type="text">
-    </div>
+    <div class="fg"><label class="flabel">Nom</label><input class="finput" id="e-nom" type="text"></div>
     <div class="frow">
-      <div class="fg">
-        <label class="flabel">Prix (&#8364;)</label>
-        <input class="finput" id="e-prix" type="number" step="0.01" min="0">
-      </div>
-      <div class="fg">
-        <label class="flabel">Unit&#233;s/lot</label>
-        <input class="finput" id="e-cond" type="number" min="1">
-      </div>
+      <div class="fg"><label class="flabel">Prix (&#8364;)</label><input class="finput" id="e-prix" type="number" step="0.01" min="0"></div>
+      <div class="fg"><label class="flabel">Unit&#233;s/lot</label><input class="finput" id="e-cond" type="number" min="1"></div>
     </div>
-    <div class="fg">
-      <label class="flabel">Cat&#233;gorie</label>
-      <select class="fselect" id="e-cat"></select>
-    </div>
+    <div class="fg"><label class="flabel">Cat&#233;gorie</label><select class="fselect" id="e-cat"></select></div>
     <button class="btn-ok" onclick="updateArticle()">Enregistrer</button>
-    <button class="btn-del" onclick="deleteArticle()">&#128465;&#65039; Supprimer l'article</button>
+    <button class="btn-del" onclick="deleteArticle()">&#128465;&#65039; Supprimer l&#8217;article</button>
     <button class="btn-no" onclick="closeModal('edit')">Annuler</button>
   </div>
 </div>
 
-<!-- &#9472;&#9472; MODAL : Scanner ticket &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
 <div class="overlay" id="modal-receipt" onclick="backdropClose(event,'receipt')">
   <div class="sheet">
     <div class="handle"></div>
     <div class="sheet-title">&#128247; Ticket de caisse</div>
-
-    <input type="file" id="receipt-file" accept="image/*" capture="environment"
-           style="display:none" onchange="analyzeReceipt(event)">
-
+    <input type="file" id="receipt-file" accept="image/*" capture="environment" style="display:none" onchange="analyzeReceipt(event)">
     <div class="scan-drop" onclick="document.getElementById('receipt-file').click()">
       <div class="scan-icon">&#128248;</div>
       <div class="scan-hint">Prendre une photo ou choisir depuis la galerie</div>
     </div>
-
     <img id="scan-preview" class="scan-preview" alt="">
     <div id="scan-status"></div>
     <div id="scan-results" class="result-list" style="display:none"></div>
-    <button class="btn-ok" id="btn-add-found" style="display:none" onclick="addFoundItems()">
-      Ajouter les articles coch&#233;s
-    </button>
+    <button class="btn-ok" id="btn-add-found" style="display:none" onclick="addFoundItems()">Ajouter les articles coch&#233;s</button>
     <button class="btn-no" onclick="closeModal('receipt')">Fermer</button>
   </div>
 </div>
 
-<!-- &#9472;&#9472; MODAL : Param&#232;tres &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472; -->
 <div class="overlay" id="modal-settings" onclick="backdropClose(event,'settings')">
   <div class="sheet">
     <div class="handle"></div>
     <div class="sheet-title">&#9881;&#65039; Param&#232;tres</div>
-
     <div class="fg">
       <label class="flabel">Cl&#233; API Anthropic (pour scanner les tickets)</label>
       <input class="finput" id="s-key" type="password" placeholder="sk-ant-&#8230;">
-      <div class="hint-text">Stock&#233;e uniquement sur cet appareil, jamais envoy&#233;e ailleurs.</div>
+      <div class="hint-text">Stock&#233;e uniquement sur cet appareil.</div>
     </div>
-
     <div class="section-label">Ordre des cat&#233;gories</div>
-    <div class="hint-text" style="margin-bottom:10px">
-      Glissez avec les fl&#232;ches pour r&#233;organiser l'ordre d'affichage.
-    </div>
     <div id="cat-order-list"></div>
-
     <button class="btn-ok" onclick="saveSettings()">Enregistrer</button>
     <button class="btn-no" onclick="closeModal('settings')">Annuler</button>
   </div>
@@ -559,12 +168,8 @@ main { padding: 16px; }
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getFirestore, collection, addDoc, updateDoc, deleteDoc, doc,
-  onSnapshot, query, orderBy, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// \u2500\u2500 Firebase \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 const db = getFirestore(initializeApp({
   apiKey: "AIzaSyAARwMDjNy-0wm_6U2SoibpNFmf_waC_98",
   authDomain: "ma-liste-de-course-4bc1c.firebaseapp.com",
@@ -575,149 +180,103 @@ const db = getFirestore(initializeApp({
 }));
 const articlesRef = collection(db, "articles");
 
-// \u2500\u2500 Categories \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+// Emojis via String.fromCodePoint (pure ASCII numbers, works everywhere)
+const IC = {
+  lait:   String.fromCodePoint(129371),  // lait (frais)
+  cart:   String.fromCodePoint(128722),  // chariot (epicerie)
+  viande: String.fromCodePoint(129385),  // viande (boucherie)
+  glace:  '‚ùÑÔ∏è',               // flocon (surgeles) - BMP
+  boisson:String.fromCodePoint(129380),  // verre (boissons)
+  spray:  String.fromCodePoint(129524),  // spray (hygiene)
+  patte:  String.fromCodePoint(128062),  // patte (animaux)
+  boite:  String.fromCodePoint(128230),  // boite (autres)
+  photo:  String.fromCodePoint(128247),  // appareil photo
+  scan:   String.fromCodePoint(128248),  // flash photo
+  reset:  String.fromCodePoint(128260),  // fleche reset
+  poubelle: String.fromCodePoint(128465) // poubelle
+};
+
 const CATS = [
-  { id: 'frais',     nom: 'Produits Frais',          icon: '\u{1F95B}', color: '#34c759' },
-  { id: 'epicerie',  nom: '\u00C9picerie',                 icon: '\u{1F6D2}', color: '#007aff' },
-  { id: 'boucherie', nom: 'Boucherie & Charcuterie',  icon: '\u{1F969}', color: '#ff3b30' },
-  { id: 'surgeles',  nom: 'Surgel\u00E9s',                 icon: '\u2744\uFE0F', color: '#5ac8fa' },
-  { id: 'boissons',  nom: 'Boissons',                 icon: '\u{1F964}', color: '#ff9500' },
-  { id: 'hygiene',   nom: 'Hygi\u00E8ne & Maison',         icon: '\u{1F9F4}', color: '#af52de' },
-  { id: 'animaux',   nom: 'Animaux & B\u{00E9b}\u00E9',           icon: '\u{1F43E}', color: '#ff2d55' },
-  { id: 'autres',    nom: 'Autres',                   icon: '\u{1F4E6}', color: '#8e8e93' },
+  { id: 'frais',     nom: 'Produits Frais',         icon: IC.lait,    color: '#34c759' },
+  { id: 'epicerie',  nom: '√âpicerie',           icon: IC.cart,    color: '#007aff' },
+  { id: 'boucherie', nom: 'Boucherie & Charcuterie', icon: IC.viande,  color: '#ff3b30' },
+  { id: 'surgeles',  nom: 'Surgel√©s',           icon: IC.glace,   color: '#5ac8fa' },
+  { id: 'boissons',  nom: 'Boissons',                icon: IC.boisson, color: '#ff9500' },
+  { id: 'hygiene',   nom: 'Hygi√®ne & Maison',  icon: IC.spray,   color: '#af52de' },
+  { id: 'animaux',   nom: 'Animaux & B√©b√©',icon: IC.patte,   color: '#ff2d55' },
+  { id: 'autres',    nom: 'Autres',                  icon: IC.boite,   color: '#8e8e93' },
 ];
 
-// Category order stored in localStorage
+let articles = [], foundItems = [], editingId = null, swipedRow = null, touchStartX = 0;
 let catOrder = JSON.parse(localStorage.getItem('catOrder') || 'null') || CATS.map(c => c.id);
 const orderedCats = () => catOrder.map(id => CATS.find(c => c.id === id)).filter(Boolean);
 
-// \u2500\u2500 State \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-let articles = [];
-let foundItems = [];
-let editingId = null;
-
-// Swipe state
-let touchStartX = 0;
-let swipedRow = null;
-
-// \u2500\u2500 Firestore listener \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-onSnapshot(query(articlesRef, orderBy("ordre", "asc")), snap => {
+onSnapshot(query(articlesRef, orderBy("ordre","asc")), snap => {
   articles = snap.docs.map(d => ({ id: d.id, ...d.data() }));
   render();
 });
 
-// \u2500\u2500 Render \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function render() {
-  const total = articles.reduce((s, a) => a.coche ? s + (a.prix || 0) * (a.quantite || 1) : s, 0);
+  const total = articles.reduce((s,a) => a.coche ? s+(a.prix||0)*(a.quantite||1) : s, 0);
   document.getElementById('total-display').textContent = fmt(total);
-
   document.getElementById('app').innerHTML = orderedCats().map(cat => {
     const items = articles.filter(a => a.categorie === cat.id);
-    return `
-      <section class="cat-section">
-        <div class="cat-header">
-          <div class="cat-title">
-            <span>${cat.icon}</span>
-            <span style="color:${cat.color}">${cat.nom}</span>
-          </div>
-          <button class="cat-add" style="background:${cat.color}"
-                  onclick="openAdd('${cat.id}')">+</button>
-        </div>
-        <div class="items-card">
-          ${items.length
-            ? items.map(a => itemHTML(a, cat.color)).join('')
-            : '<div class="empty-cat">Aucun article \u2014 appuyez sur + pour ajouter</div>'
-          }
-        </div>
-      </section>`;
+    return '<section class="cat-section">'
+      + '<div class="cat-header">'
+      + '<div class="cat-title"><span>' + cat.icon + '</span><span style="color:' + cat.color + '">' + cat.nom + '</span></div>'
+      + '<button class="cat-add" style="background:' + cat.color + '" onclick="openAdd(\'' + cat.id + '\')">+</button>'
+      + '</div><div class="items-card">'
+      + (items.length ? items.map(a => itemHTML(a)).join('') : '<div class="empty-cat">Aucun article ‚Äî appuyez sur + pour ajouter</div>')
+      + '</div></section>';
   }).join('');
-
   attachSwipe();
 }
 
-function itemHTML(a, color) {
+function itemHTML(a) {
   const qty = a.quantite || 1;
-  const cond = (a.conditionnement || 1) > 1 ? ` \u00B7 lot de ${a.conditionnement}` : '';
-  const lineTotal = (a.prix || 0) * qty;
-  const sub = qty > 1
-    ? `${qty} \u00D7 ${fmt(a.prix || 0)}${cond} = ${fmt(lineTotal)}`
-    : `${fmt(a.prix || 0)}${cond}`;
-
-  return `
-    <div class="item-wrap" data-id="${a.id}">
-      <div class="item-delete-bg" onclick="confirmDelete('${a.id}')">\u{1F5D1}\uFE0F Supprimer</div>
-      <div class="item-row${a.coche ? ' checked' : ''}" id="row-${a.id}">
-        <div class="item-check${a.coche ? ' on' : ''}"
-             onclick="toggle('${a.id}',${!a.coche})">${a.coche ? '\u2713' : ''}</div>
-        <div class="item-info" onclick="openEdit('${a.id}')">
-          <div class="item-name">${esc(a.nom)}</div>
-          <div class="item-sub">${sub} <span style="color:#bbb;font-size:11px">\u00B7 toucher pour modifier</span></div>
-        </div>
-        <div class="item-right">
-          <span class="item-total">${fmt(lineTotal)}</span>
-          <div class="qty-ctrl">
-            <button class="qty-btn" onclick="setQty('${a.id}',${qty - 1})">\u2212</button>
-            <span class="qty-val">${qty}</span>
-            <button class="qty-btn" onclick="setQty('${a.id}',${qty + 1})">+</button>
-          </div>
-        </div>
-      </div>
-    </div>`;
+  const cond = (a.conditionnement||1) > 1 ? ' ¬∑ lot de ' + a.conditionnement : '';
+  const lt = (a.prix||0)*qty;
+  const sub = qty > 1 ? qty + ' √ó ' + fmt(a.prix||0) + cond + ' = ' + fmt(lt) : fmt(a.prix||0) + cond;
+  return '<div class="item-wrap" data-id="' + a.id + '">'
+    + '<div class="item-delete-bg" onclick="confirmDelete(\'' + a.id + '\')">' + IC.poubelle + ' Supprimer</div>'
+    + '<div class="item-row' + (a.coche ? ' checked' : '') + '" id="row-' + a.id + '">'
+    + '<div class="item-check' + (a.coche ? ' on' : '') + '" onclick="toggle(\'' + a.id + '\',' + !a.coche + ')">' + (a.coche ? '‚úì' : '') + '</div>'
+    + '<div class="item-info" onclick="openEdit(\'' + a.id + '\')">'
+    + '<div class="item-name">' + esc(a.nom) + '</div>'
+    + '<div class="item-sub">' + sub + ' <span style="color:#bbb;font-size:11px">¬∑ toucher pour modifier</span></div>'
+    + '</div>'
+    + '<div class="item-right"><span class="item-total">' + fmt(lt) + '</span>'
+    + '<div class="qty-ctrl">'
+    + '<button class="qty-btn" onclick="setQty(\'' + a.id + '\',' + (qty-1) + ')">&#8722;</button>'
+    + '<span class="qty-val">' + qty + '</span>'
+    + '<button class="qty-btn" onclick="setQty(\'' + a.id + '\',' + (qty+1) + ')">+</button>'
+    + '</div></div></div></div>';
 }
 
-// \u2500\u2500 Swipe-to-delete \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function attachSwipe() {
   document.querySelectorAll('.item-row').forEach(row => {
     row.addEventListener('touchstart', e => {
       touchStartX = e.touches[0].clientX;
-      // Close any previously swiped row
-      if (swipedRow && swipedRow !== row) {
-        swipedRow.classList.remove('swiped');
-        swipedRow.style.transform = '';
-        swipedRow = null;
-      }
-    }, { passive: true });
-
+      if (swipedRow && swipedRow !== row) { swipedRow.style.transform=''; swipedRow=null; }
+    }, {passive:true});
     row.addEventListener('touchmove', e => {
       const dx = e.touches[0].clientX - touchStartX;
-      if (dx < -10) {
-        const clamp = Math.max(dx, -90);
-        row.style.transform = `translateX(${clamp}px)`;
-        row.style.transition = 'none';
-      }
-    }, { passive: true });
-
+      if (dx < -10) row.style.transform = 'translateX(' + Math.max(dx,-90) + 'px)';
+    }, {passive:true});
     row.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - touchStartX;
       row.style.transition = 'transform 0.2s ease';
-      if (dx < -50) {
-        row.style.transform = 'translateX(-90px)';
-        swipedRow = row;
-      } else {
-        row.style.transform = '';
-        swipedRow = null;
-      }
+      if (dx < -50) { row.style.transform='translateX(-90px)'; swipedRow=row; }
+      else { row.style.transform=''; swipedRow=null; }
     });
   });
-
-  // Tap anywhere else closes the swiped row
-  document.addEventListener('touchstart', e => {
-    if (swipedRow && !e.target.closest('.item-wrap')) {
-      swipedRow.style.transform = '';
-      swipedRow = null;
-    }
-  }, { passive: true });
 }
 
-// \u2500\u2500 Article actions \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-window.toggle  = (id, v)   => updateDoc(doc(db, 'articles', id), { coche: v });
-window.setQty  = (id, qty) => { if (qty >= 1) updateDoc(doc(db, 'articles', id), { quantite: qty }); };
+window.toggle = (id,v) => updateDoc(doc(db,'articles',id), {coche:v});
+window.setQty = (id,qty) => { if(qty>=1) updateDoc(doc(db,'articles',id),{quantite:qty}); };
 
-window.openAdd = (catId) => {
-  const sel = document.getElementById('a-cat');
-  sel.innerHTML = CATS.map(c =>
-    `<option value="${c.id}"${c.id === catId ? ' selected' : ''}>${c.icon} ${c.nom}</option>`
-  ).join('');
+window.openAdd = catId => {
+  document.getElementById('a-cat').innerHTML = CATS.map(c => '<option value="' + c.id + '"' + (c.id===catId?' selected':'') + '>' + c.icon + ' ' + c.nom + '</option>').join('');
   document.getElementById('a-nom').value = '';
   document.getElementById('a-prix').value = '';
   document.getElementById('a-cond').value = '1';
@@ -725,215 +284,143 @@ window.openAdd = (catId) => {
 };
 
 window.saveArticle = async () => {
-  const nom  = document.getElementById('a-nom').value.trim();
-  const prix = parseFloat(document.getElementById('a-prix').value) || 0;
-  const cond = parseInt(document.getElementById('a-cond').value) || 1;
-  const cat  = document.getElementById('a-cat').value;
-  if (!nom) { alert('Veuillez entrer un nom.'); return; }
-  await addDoc(articlesRef, {
-    nom, prix, categorie: cat, conditionnement: cond,
-    quantite: 1, coche: false, ordre: Date.now(), date: serverTimestamp()
-  });
+  const nom = document.getElementById('a-nom').value.trim();
+  const prix = parseFloat(document.getElementById('a-prix').value)||0;
+  const cond = parseInt(document.getElementById('a-cond').value)||1;
+  const cat = document.getElementById('a-cat').value;
+  if(!nom){ alert('Veuillez entrer un nom.'); return; }
+  await addDoc(articlesRef, {nom,prix,categorie:cat,conditionnement:cond,quantite:1,coche:false,ordre:Date.now(),date:serverTimestamp()});
   closeModal('add');
 };
 
-window.openEdit = (id) => {
-  const a = articles.find(x => x.id === id);
-  if (!a) return;
+window.openEdit = id => {
+  const a = articles.find(x => x.id===id);
+  if(!a) return;
   editingId = id;
-  document.getElementById('e-id').value = id;
   document.getElementById('e-nom').value = a.nom;
-  document.getElementById('e-prix').value = a.prix || 0;
-  document.getElementById('e-cond').value = a.conditionnement || 1;
-  const sel = document.getElementById('e-cat');
-  sel.innerHTML = CATS.map(c =>
-    `<option value="${c.id}"${c.id === a.categorie ? ' selected' : ''}>${c.icon} ${c.nom}</option>`
-  ).join('');
+  document.getElementById('e-prix').value = a.prix||0;
+  document.getElementById('e-cond').value = a.conditionnement||1;
+  document.getElementById('e-cat').innerHTML = CATS.map(c => '<option value="' + c.id + '"' + (c.id===a.categorie?' selected':'') + '>' + c.icon + ' ' + c.nom + '</option>').join('');
   openModal('edit');
 };
 
 window.updateArticle = async () => {
-  const nom  = document.getElementById('e-nom').value.trim();
-  const prix = parseFloat(document.getElementById('e-prix').value) || 0;
-  const cond = parseInt(document.getElementById('e-cond').value) || 1;
-  const cat  = document.getElementById('e-cat').value;
-  if (!nom || !editingId) return;
-  await updateDoc(doc(db, 'articles', editingId), { nom, prix, conditionnement: cond, categorie: cat });
+  const nom = document.getElementById('e-nom').value.trim();
+  const prix = parseFloat(document.getElementById('e-prix').value)||0;
+  const cond = parseInt(document.getElementById('e-cond').value)||1;
+  const cat = document.getElementById('e-cat').value;
+  if(!nom||!editingId) return;
+  await updateDoc(doc(db,'articles',editingId),{nom,prix,conditionnement:cond,categorie:cat});
   closeModal('edit');
 };
 
 window.deleteArticle = async () => {
-  if (!editingId) return;
-  const a = articles.find(x => x.id === editingId);
-  if (!confirm(`Supprimer "${a?.nom}" de la liste ?`)) return;
-  await deleteDoc(doc(db, 'articles', editingId));
+  if(!editingId) return;
+  const a = articles.find(x=>x.id===editingId);
+  if(!confirm('Supprimer "' + (a?.nom||'') + '" de la liste ?')) return;
+  await deleteDoc(doc(db,'articles',editingId));
   closeModal('edit');
 };
 
-window.confirmDelete = async (id) => {
-  const a = articles.find(x => x.id === id);
-  if (!confirm(`Supprimer "${a?.nom}" de la liste ?`)) return;
-  await deleteDoc(doc(db, 'articles', id));
+window.confirmDelete = async id => {
+  const a = articles.find(x=>x.id===id);
+  if(!confirm('Supprimer "' + (a?.nom||'') + '" de la liste ?')) return;
+  await deleteDoc(doc(db,'articles',id));
 };
 
 window.confirmReset = () => {
-  if (!confirm('D\u{00E9c}ocher tous les articles et remettre les quantit\u00E9s \u00E0 1 ?')) return;
-  articles.forEach(a => updateDoc(doc(db, 'articles', a.id), { coche: false, quantite: 1 }));
+  if(!confirm('D√©cocher tous les articles et remettre les quantit√©s √† 1 ?')) return;
+  articles.forEach(a => updateDoc(doc(db,'articles',a.id),{coche:false,quantite:1}));
 };
 
-// \u2500\u2500 Category reordering \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function renderCatOrder() {
-  const list = document.getElementById('cat-order-list');
   const cats = orderedCats();
-  list.innerHTML = cats.map((cat, i) => `
-    <div class="cat-order-row">
-      <span>${cat.icon}</span>
-      <span class="cat-order-name">${cat.nom}</span>
-      <button class="order-btn" onclick="moveCat('${cat.id}',-1)" ${i === 0 ? 'disabled' : ''}>\u2191</button>
-      <button class="order-btn" onclick="moveCat('${cat.id}',+1)" ${i === cats.length - 1 ? 'disabled' : ''}>\u2193</button>
-    </div>`).join('');
+  document.getElementById('cat-order-list').innerHTML = cats.map((cat,i) =>
+    '<div class="cat-order-row"><span>' + cat.icon + '</span><span class="cat-order-name">' + cat.nom + '</span>'
+    + '<button class="order-btn" onclick="moveCat(\'' + cat.id + '\',-1)"' + (i===0?' disabled':'') + '>‚Üë</button>'
+    + '<button class="order-btn" onclick="moveCat(\'' + cat.id + '\',1)"' + (i===cats.length-1?' disabled':'') + '>‚Üì</button>'
+    + '</div>'
+  ).join('');
 }
 
-window.moveCat = (id, dir) => {
-  const i = catOrder.indexOf(id);
-  const j = i + dir;
-  if (j < 0 || j >= catOrder.length) return;
-  [catOrder[i], catOrder[j]] = [catOrder[j], catOrder[i]];
+window.moveCat = (id,dir) => {
+  const i = catOrder.indexOf(id), j = i+dir;
+  if(j<0||j>=catOrder.length) return;
+  [catOrder[i],catOrder[j]]=[catOrder[j],catOrder[i]];
   renderCatOrder();
 };
 
-// \u2500\u2500 Receipt scanner \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-window.analyzeReceipt = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+window.analyzeReceipt = async e => {
+  const file = e.target.files[0]; if(!file) return;
   const preview = document.getElementById('scan-preview');
-  preview.src = URL.createObjectURL(file);
-  preview.style.display = 'block';
-
+  preview.src = URL.createObjectURL(file); preview.style.display='block';
   const apiKey = localStorage.getItem('anthropic_key');
-  if (!apiKey) {
-    setStatus('<span style="color:var(--red)">\u26A0\uFE0F Cl\u00E9 API manquante \u2014 ouvrez \u2699\uFE0F Param\u00E8tres.</span>');
-    return;
-  }
-
-  setStatus('<div class="spinner"></div>Analyse du ticket en cours\u2026');
-  document.getElementById('scan-results').style.display = 'none';
-  document.getElementById('btn-add-found').style.display = 'none';
-
+  if(!apiKey){ setStatus('<span style="color:var(--red)">‚ö†Ô∏è Cl√© API manquante ‚Äî ouvrez ‚öôÔ∏è Param√®tres.</span>'); return; }
+  setStatus('<div class="spinner"></div>Analyse du ticket en cours‚Ä¶');
+  document.getElementById('scan-results').style.display='none';
+  document.getElementById('btn-add-found').style.display='none';
   try {
     const b64 = await toBase64(file);
-    const known = articles.map(a => a.nom.toLowerCase()).join(', ');
-
+    const known = articles.map(a=>a.nom.toLowerCase()).join(', ');
     const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json',
-        'anthropic-dangerous-allow-browser': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 1024,
-        messages: [{
-          role: 'user',
-          content: [
-            { type: 'image', source: { type: 'base64', media_type: file.type, data: b64 } },
-            { type: 'text', text: `Voici un ticket de caisse fran\u{00E7a}is. Liste chaque article alimentaire ou m\u00E9nager avec son prix unitaire.
-R\u00E9ponds UNIQUEMENT avec un JSON valide, rien d'autre :
-[{"nom":"...","prix":0.00,"categorie":"frais|epicerie|boucherie|surgeles|boissons|hygiene|animaux|autres"}]
-Ignore ces articles d\u00E9j\u00E0 connus : ${known || 'aucun'}.
-Si le ticket est illisible, r\u00E9ponds [].` }
-          ]
-        }]
-      })
+      method:'POST',
+      headers:{'x-api-key':apiKey,'anthropic-version':'2023-06-01','content-type':'application/json','anthropic-dangerous-allow-browser':'true'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1024,messages:[{role:'user',content:[
+        {type:'image',source:{type:'base64',media_type:file.type,data:b64}},
+        {type:'text',text:'Voici un ticket de caisse fran√ßais. Liste chaque article avec son prix unitaire.\nR√©ponds UNIQUEMENT avec un JSON valide :\n[{"nom":"...","prix":0.00,"categorie":"frais|epicerie|boucherie|surgeles|boissons|hygiene|animaux|autres"}]\nIgnore ces articles d√©j√† connus : ' + known + '.\nSi illisible, r√©ponds [].'}
+      ]}]})
     });
-
-    if (!res.ok) throw new Error(`Erreur API ${res.status}`);
+    if(!res.ok) throw new Error('Erreur API ' + res.status);
     const json = await res.json();
-    let items;
-    try { items = JSON.parse(json.content[0].text.trim()); } catch { items = []; }
-
+    let items; try { items=JSON.parse(json.content[0].text.trim()); } catch{ items=[]; }
     foundItems = items;
-    if (!items.length) { setStatus('Aucun nouvel article d\u00E9tect\u00E9.'); return; }
-
+    if(!items.length){ setStatus('Aucun nouvel article d√©tect√©.'); return; }
     setStatus('');
     const el = document.getElementById('scan-results');
-    el.innerHTML = `<div style="font-weight:600;margin-bottom:8px">${items.length} article(s) d\u00E9tect\u00E9(s) :</div>` +
-      items.map((it, i) => `
-        <div class="result-row">
-          <input type="checkbox" id="ri${i}" checked>
-          <label for="ri${i}">
-            <div class="result-name">${esc(it.nom)}</div>
-            <div class="result-sub">${fmt(it.prix || 0)} \u00B7 ${catName(it.categorie)}</div>
-          </label>
-        </div>`).join('');
-    el.style.display = 'block';
-    document.getElementById('btn-add-found').style.display = 'block';
-  } catch (err) {
-    setStatus(`<span style="color:var(--red)">Erreur : ${err.message}</span>`);
-  }
+    el.innerHTML = '<div style="font-weight:600;margin-bottom:8px">' + items.length + ' article(s) d√©tect√©(s) :</div>'
+      + items.map((it,i) => '<div class="result-row"><input type="checkbox" id="ri' + i + '" checked><label for="ri' + i + '"><div class="result-name">' + esc(it.nom) + '</div><div class="result-sub">' + fmt(it.prix||0) + ' ¬∑ ' + catName(it.categorie) + '</div></label></div>').join('');
+    el.style.display='block';
+    document.getElementById('btn-add-found').style.display='block';
+  } catch(err){ setStatus('<span style="color:var(--red)">Erreur : ' + err.message + '</span>'); }
 };
 
 window.addFoundItems = async () => {
-  const toAdd = foundItems.filter((_, i) => document.getElementById(`ri${i}`)?.checked);
-  for (const it of toAdd) {
-    await addDoc(articlesRef, {
-      nom: it.nom, prix: parseFloat(it.prix) || 0,
-      categorie: it.categorie || 'autres', conditionnement: 1,
-      quantite: 1, coche: false, ordre: Date.now(), date: serverTimestamp()
-    });
-  }
+  const toAdd = foundItems.filter((_,i) => document.getElementById('ri'+i)?.checked);
+  for(const it of toAdd) await addDoc(articlesRef,{nom:it.nom,prix:parseFloat(it.prix)||0,categorie:it.categorie||'autres',conditionnement:1,quantite:1,coche:false,ordre:Date.now(),date:serverTimestamp()});
   closeModal('receipt');
-  if (toAdd.length) alert(`\u2705 ${toAdd.length} article(s) ajout\u00E9(s) !`);
+  if(toAdd.length) alert('‚úÖ ' + toAdd.length + ' article(s) ajout√©(s) !');
 };
 
-function setStatus(html) {
-  document.getElementById('scan-status').innerHTML =
-    html ? `<div class="scan-status">${html}</div>` : '';
-}
+function setStatus(html){ document.getElementById('scan-status').innerHTML = html ? '<div class="scan-status">'+html+'</div>' : ''; }
 
-// \u2500\u2500 Settings \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 window.saveSettings = () => {
   const k = document.getElementById('s-key').value.trim();
-  if (k) localStorage.setItem('anthropic_key', k);
-  else localStorage.removeItem('anthropic_key');
+  if(k) localStorage.setItem('anthropic_key',k); else localStorage.removeItem('anthropic_key');
   localStorage.setItem('catOrder', JSON.stringify(catOrder));
-  closeModal('settings');
-  render();
+  closeModal('settings'); render();
 };
 
-// \u2500\u2500 Modal helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-window.openModal = (id) => {
-  if (id === 'settings') {
-    document.getElementById('s-key').value = localStorage.getItem('anthropic_key') || '';
-    renderCatOrder();
-  }
-  document.getElementById(`modal-${id}`).classList.add('open');
+window.openModal = id => {
+  if(id==='settings'){ document.getElementById('s-key').value=localStorage.getItem('anthropic_key')||''; renderCatOrder(); }
+  document.getElementById('modal-'+id).classList.add('open');
 };
-window.closeModal = (id) => {
-  document.getElementById(`modal-${id}`).classList.remove('open');
-  if (id === 'receipt') {
-    document.getElementById('receipt-file').value = '';
-    document.getElementById('scan-preview').style.display = 'none';
-    document.getElementById('scan-status').innerHTML = '';
-    document.getElementById('scan-results').style.display = 'none';
-    document.getElementById('btn-add-found').style.display = 'none';
-    foundItems = [];
+window.closeModal = id => {
+  document.getElementById('modal-'+id).classList.remove('open');
+  if(id==='receipt'){
+    document.getElementById('receipt-file').value='';
+    document.getElementById('scan-preview').style.display='none';
+    document.getElementById('scan-status').innerHTML='';
+    document.getElementById('scan-results').style.display='none';
+    document.getElementById('btn-add-found').style.display='none';
+    foundItems=[];
   }
 };
-window.backdropClose = (e, id) => { if (e.target === e.currentTarget) closeModal(id); };
+window.backdropClose = (e,id) => { if(e.target===e.currentTarget) closeModal(id); };
 
-// \u2500\u2500 Utils \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
-const fmt = n => (n || 0).toFixed(2).replace('.', ',') + ' \u20AC';
+const fmt = n => (n||0).toFixed(2).replace('.',',') + ' ‚Ç¨';
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const catName = id => CATS.find(c => c.id === id)?.nom || 'Autres';
-const toBase64 = file => new Promise((res, rej) => {
-  const r = new FileReader();
-  r.onload = () => res(r.result.split(',')[1]);
-  r.onerror = rej;
-  r.readAsDataURL(file);
-});
+const catName = id => CATS.find(c=>c.id===id)?.nom||'Autres';
+const toBase64 = file => new Promise((res,rej) => { const r=new FileReader(); r.onload=()=>res(r.result.split(',')[1]); r.onerror=rej; r.readAsDataURL(file); });
 </script>
 </body>
 </html>
