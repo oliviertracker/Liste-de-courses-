@@ -564,7 +564,7 @@ import {
   onSnapshot, query, orderBy, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// &#9472;&#9472; Firebase &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Firebase \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 const db = getFirestore(initializeApp({
   apiKey: "AIzaSyAARwMDjNy-0wm_6U2SoibpNFmf_waC_98",
   authDomain: "ma-liste-de-course-4bc1c.firebaseapp.com",
@@ -575,23 +575,23 @@ const db = getFirestore(initializeApp({
 }));
 const articlesRef = collection(db, "articles");
 
-// &#9472;&#9472; Categories &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Categories \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 const CATS = [
-  { id: 'frais',     nom: 'Produits Frais',          icon: '&#129371;', color: '#34c759' },
-  { id: 'epicerie',  nom: '&#201;picerie',                 icon: '&#128722;', color: '#007aff' },
-  { id: 'boucherie', nom: 'Boucherie & Charcuterie',  icon: '&#129385;', color: '#ff3b30' },
-  { id: 'surgeles',  nom: 'Surgel&#233;s',                 icon: '&#10052;&#65039;', color: '#5ac8fa' },
-  { id: 'boissons',  nom: 'Boissons',                 icon: '&#129380;', color: '#ff9500' },
-  { id: 'hygiene',   nom: 'Hygi&#232;ne & Maison',         icon: '&#129524;', color: '#af52de' },
-  { id: 'animaux',   nom: 'Animaux & B&#233;b&#233;',           icon: '&#128062;', color: '#ff2d55' },
-  { id: 'autres',    nom: 'Autres',                   icon: '&#128230;', color: '#8e8e93' },
+  { id: 'frais',     nom: 'Produits Frais',          icon: '\u1F95B', color: '#34c759' },
+  { id: 'epicerie',  nom: '\u00C9picerie',                 icon: '\u1F6D2', color: '#007aff' },
+  { id: 'boucherie', nom: 'Boucherie & Charcuterie',  icon: '\u1F969', color: '#ff3b30' },
+  { id: 'surgeles',  nom: 'Surgel\u00E9s',                 icon: '\u2744\uFE0F', color: '#5ac8fa' },
+  { id: 'boissons',  nom: 'Boissons',                 icon: '\u1F964', color: '#ff9500' },
+  { id: 'hygiene',   nom: 'Hygi\u00E8ne & Maison',         icon: '\u1F9F4', color: '#af52de' },
+  { id: 'animaux',   nom: 'Animaux & B\u00E9b\u00E9',           icon: '\u1F43E', color: '#ff2d55' },
+  { id: 'autres',    nom: 'Autres',                   icon: '\u1F4E6', color: '#8e8e93' },
 ];
 
 // Category order stored in localStorage
 let catOrder = JSON.parse(localStorage.getItem('catOrder') || 'null') || CATS.map(c => c.id);
 const orderedCats = () => catOrder.map(id => CATS.find(c => c.id === id)).filter(Boolean);
 
-// &#9472;&#9472; State &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 State \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 let articles = [];
 let foundItems = [];
 let editingId = null;
@@ -600,13 +600,13 @@ let editingId = null;
 let touchStartX = 0;
 let swipedRow = null;
 
-// &#9472;&#9472; Firestore listener &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Firestore listener \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 onSnapshot(query(articlesRef, orderBy("ordre", "asc")), snap => {
   articles = snap.docs.map(d => ({ id: d.id, ...d.data() }));
   render();
 });
 
-// &#9472;&#9472; Render &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Render \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function render() {
   const total = articles.reduce((s, a) => a.coche ? s + (a.prix || 0) * (a.quantite || 1) : s, 0);
   document.getElementById('total-display').textContent = fmt(total);
@@ -626,7 +626,7 @@ function render() {
         <div class="items-card">
           ${items.length
             ? items.map(a => itemHTML(a, cat.color)).join('')
-            : '<div class="empty-cat">Aucun article &#8212; appuyez sur + pour ajouter</div>'
+            : '<div class="empty-cat">Aucun article \u2014 appuyez sur + pour ajouter</div>'
           }
         </div>
       </section>`;
@@ -637,26 +637,26 @@ function render() {
 
 function itemHTML(a, color) {
   const qty = a.quantite || 1;
-  const cond = (a.conditionnement || 1) > 1 ? ` &#183; lot de ${a.conditionnement}` : '';
+  const cond = (a.conditionnement || 1) > 1 ? ` \u00B7 lot de ${a.conditionnement}` : '';
   const lineTotal = (a.prix || 0) * qty;
   const sub = qty > 1
-    ? `${qty} &#215; ${fmt(a.prix || 0)}${cond} = ${fmt(lineTotal)}`
+    ? `${qty} \u00D7 ${fmt(a.prix || 0)}${cond} = ${fmt(lineTotal)}`
     : `${fmt(a.prix || 0)}${cond}`;
 
   return `
     <div class="item-wrap" data-id="${a.id}">
-      <div class="item-delete-bg" onclick="confirmDelete('${a.id}')">&#128465;&#65039; Supprimer</div>
+      <div class="item-delete-bg" onclick="confirmDelete('${a.id}')">\u1F5D1\uFE0F Supprimer</div>
       <div class="item-row${a.coche ? ' checked' : ''}" id="row-${a.id}">
         <div class="item-check${a.coche ? ' on' : ''}"
-             onclick="toggle('${a.id}',${!a.coche})">${a.coche ? '&#10003;' : ''}</div>
+             onclick="toggle('${a.id}',${!a.coche})">${a.coche ? '\u2713' : ''}</div>
         <div class="item-info" onclick="openEdit('${a.id}')">
           <div class="item-name">${esc(a.nom)}</div>
-          <div class="item-sub">${sub} <span style="color:#bbb;font-size:11px">&#183; toucher pour modifier</span></div>
+          <div class="item-sub">${sub} <span style="color:#bbb;font-size:11px">\u00B7 toucher pour modifier</span></div>
         </div>
         <div class="item-right">
           <span class="item-total">${fmt(lineTotal)}</span>
           <div class="qty-ctrl">
-            <button class="qty-btn" onclick="setQty('${a.id}',${qty - 1})">&#8722;</button>
+            <button class="qty-btn" onclick="setQty('${a.id}',${qty - 1})">\u2212</button>
             <span class="qty-val">${qty}</span>
             <button class="qty-btn" onclick="setQty('${a.id}',${qty + 1})">+</button>
           </div>
@@ -665,7 +665,7 @@ function itemHTML(a, color) {
     </div>`;
 }
 
-// &#9472;&#9472; Swipe-to-delete &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Swipe-to-delete \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function attachSwipe() {
   document.querySelectorAll('.item-row').forEach(row => {
     row.addEventListener('touchstart', e => {
@@ -709,7 +709,7 @@ function attachSwipe() {
   }, { passive: true });
 }
 
-// &#9472;&#9472; Article actions &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Article actions \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 window.toggle  = (id, v)   => updateDoc(doc(db, 'articles', id), { coche: v });
 window.setQty  = (id, qty) => { if (qty >= 1) updateDoc(doc(db, 'articles', id), { quantite: qty }); };
 
@@ -777,11 +777,11 @@ window.confirmDelete = async (id) => {
 };
 
 window.confirmReset = () => {
-  if (!confirm('D&#233;cocher tous les articles et remettre les quantit&#233;s &#224; 1 ?')) return;
+  if (!confirm('D\u00E9cocher tous les articles et remettre les quantit\u00E9s \u00E0 1 ?')) return;
   articles.forEach(a => updateDoc(doc(db, 'articles', a.id), { coche: false, quantite: 1 }));
 };
 
-// &#9472;&#9472; Category reordering &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Category reordering \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function renderCatOrder() {
   const list = document.getElementById('cat-order-list');
   const cats = orderedCats();
@@ -789,8 +789,8 @@ function renderCatOrder() {
     <div class="cat-order-row">
       <span>${cat.icon}</span>
       <span class="cat-order-name">${cat.nom}</span>
-      <button class="order-btn" onclick="moveCat('${cat.id}',-1)" ${i === 0 ? 'disabled' : ''}>&#8593;</button>
-      <button class="order-btn" onclick="moveCat('${cat.id}',+1)" ${i === cats.length - 1 ? 'disabled' : ''}>&#8595;</button>
+      <button class="order-btn" onclick="moveCat('${cat.id}',-1)" ${i === 0 ? 'disabled' : ''}>\u2191</button>
+      <button class="order-btn" onclick="moveCat('${cat.id}',+1)" ${i === cats.length - 1 ? 'disabled' : ''}>\u2193</button>
     </div>`).join('');
 }
 
@@ -802,7 +802,7 @@ window.moveCat = (id, dir) => {
   renderCatOrder();
 };
 
-// &#9472;&#9472; Receipt scanner &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Receipt scanner \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 window.analyzeReceipt = async (e) => {
   const file = e.target.files[0];
   if (!file) return;
@@ -812,11 +812,11 @@ window.analyzeReceipt = async (e) => {
 
   const apiKey = localStorage.getItem('anthropic_key');
   if (!apiKey) {
-    setStatus('<span style="color:var(--red)">&#9888;&#65039; Cl&#233; API manquante &#8212; ouvrez &#9881;&#65039; Param&#232;tres.</span>');
+    setStatus('<span style="color:var(--red)">\u26A0\uFE0F Cl\u00E9 API manquante \u2014 ouvrez \u2699\uFE0F Param\u00E8tres.</span>');
     return;
   }
 
-  setStatus('<div class="spinner"></div>Analyse du ticket en cours&#8230;');
+  setStatus('<div class="spinner"></div>Analyse du ticket en cours\u2026');
   document.getElementById('scan-results').style.display = 'none';
   document.getElementById('btn-add-found').style.display = 'none';
 
@@ -839,11 +839,11 @@ window.analyzeReceipt = async (e) => {
           role: 'user',
           content: [
             { type: 'image', source: { type: 'base64', media_type: file.type, data: b64 } },
-            { type: 'text', text: `Voici un ticket de caisse fran&#231;ais. Liste chaque article alimentaire ou m&#233;nager avec son prix unitaire.
-R&#233;ponds UNIQUEMENT avec un JSON valide, rien d'autre :
+            { type: 'text', text: `Voici un ticket de caisse fran\u00E7ais. Liste chaque article alimentaire ou m\u00E9nager avec son prix unitaire.
+R\u00E9ponds UNIQUEMENT avec un JSON valide, rien d'autre :
 [{"nom":"...","prix":0.00,"categorie":"frais|epicerie|boucherie|surgeles|boissons|hygiene|animaux|autres"}]
-Ignore ces articles d&#233;j&#224; connus : ${known || 'aucun'}.
-Si le ticket est illisible, r&#233;ponds [].` }
+Ignore ces articles d\u00E9j\u00E0 connus : ${known || 'aucun'}.
+Si le ticket est illisible, r\u00E9ponds [].` }
           ]
         }]
       })
@@ -855,17 +855,17 @@ Si le ticket est illisible, r&#233;ponds [].` }
     try { items = JSON.parse(json.content[0].text.trim()); } catch { items = []; }
 
     foundItems = items;
-    if (!items.length) { setStatus('Aucun nouvel article d&#233;tect&#233;.'); return; }
+    if (!items.length) { setStatus('Aucun nouvel article d\u00E9tect\u00E9.'); return; }
 
     setStatus('');
     const el = document.getElementById('scan-results');
-    el.innerHTML = `<div style="font-weight:600;margin-bottom:8px">${items.length} article(s) d&#233;tect&#233;(s) :</div>` +
+    el.innerHTML = `<div style="font-weight:600;margin-bottom:8px">${items.length} article(s) d\u00E9tect\u00E9(s) :</div>` +
       items.map((it, i) => `
         <div class="result-row">
           <input type="checkbox" id="ri${i}" checked>
           <label for="ri${i}">
             <div class="result-name">${esc(it.nom)}</div>
-            <div class="result-sub">${fmt(it.prix || 0)} &#183; ${catName(it.categorie)}</div>
+            <div class="result-sub">${fmt(it.prix || 0)} \u00B7 ${catName(it.categorie)}</div>
           </label>
         </div>`).join('');
     el.style.display = 'block';
@@ -885,7 +885,7 @@ window.addFoundItems = async () => {
     });
   }
   closeModal('receipt');
-  if (toAdd.length) alert(`&#9989; ${toAdd.length} article(s) ajout&#233;(s) !`);
+  if (toAdd.length) alert(`\u2705 ${toAdd.length} article(s) ajout\u00E9(s) !`);
 };
 
 function setStatus(html) {
@@ -893,7 +893,7 @@ function setStatus(html) {
     html ? `<div class="scan-status">${html}</div>` : '';
 }
 
-// &#9472;&#9472; Settings &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Settings \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 window.saveSettings = () => {
   const k = document.getElementById('s-key').value.trim();
   if (k) localStorage.setItem('anthropic_key', k);
@@ -903,7 +903,7 @@ window.saveSettings = () => {
   render();
 };
 
-// &#9472;&#9472; Modal helpers &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+// \u2500\u2500 Modal helpers \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 window.openModal = (id) => {
   if (id === 'settings') {
     document.getElementById('s-key').value = localStorage.getItem('anthropic_key') || '';
@@ -924,8 +924,8 @@ window.closeModal = (id) => {
 };
 window.backdropClose = (e, id) => { if (e.target === e.currentTarget) closeModal(id); };
 
-// &#9472;&#9472; Utils &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
-const fmt = n => (n || 0).toFixed(2).replace('.', ',') + ' &#8364;';
+// \u2500\u2500 Utils \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
+const fmt = n => (n || 0).toFixed(2).replace('.', ',') + ' \u20AC';
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 const catName = id => CATS.find(c => c.id === id)?.nom || 'Autres';
 const toBase64 = file => new Promise((res, rej) => {
