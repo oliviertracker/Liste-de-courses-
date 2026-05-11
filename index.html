@@ -577,14 +577,14 @@ const articlesRef = collection(db, "articles");
 
 // \u2500\u2500 Categories \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 const CATS = [
-  { id: 'frais',     nom: 'Produits Frais',          icon: '\u1F95B', color: '#34c759' },
-  { id: 'epicerie',  nom: '\u00C9picerie',                 icon: '\u1F6D2', color: '#007aff' },
-  { id: 'boucherie', nom: 'Boucherie & Charcuterie',  icon: '\u1F969', color: '#ff3b30' },
+  { id: 'frais',     nom: 'Produits Frais',          icon: '\u{1F95B}', color: '#34c759' },
+  { id: 'epicerie',  nom: '\u00C9picerie',                 icon: '\u{1F6D2}', color: '#007aff' },
+  { id: 'boucherie', nom: 'Boucherie & Charcuterie',  icon: '\u{1F969}', color: '#ff3b30' },
   { id: 'surgeles',  nom: 'Surgel\u00E9s',                 icon: '\u2744\uFE0F', color: '#5ac8fa' },
-  { id: 'boissons',  nom: 'Boissons',                 icon: '\u1F964', color: '#ff9500' },
-  { id: 'hygiene',   nom: 'Hygi\u00E8ne & Maison',         icon: '\u1F9F4', color: '#af52de' },
-  { id: 'animaux',   nom: 'Animaux & B\u00E9b\u00E9',           icon: '\u1F43E', color: '#ff2d55' },
-  { id: 'autres',    nom: 'Autres',                   icon: '\u1F4E6', color: '#8e8e93' },
+  { id: 'boissons',  nom: 'Boissons',                 icon: '\u{1F964}', color: '#ff9500' },
+  { id: 'hygiene',   nom: 'Hygi\u00E8ne & Maison',         icon: '\u{1F9F4}', color: '#af52de' },
+  { id: 'animaux',   nom: 'Animaux & B\u{00E9b}\u00E9',           icon: '\u{1F43E}', color: '#ff2d55' },
+  { id: 'autres',    nom: 'Autres',                   icon: '\u{1F4E6}', color: '#8e8e93' },
 ];
 
 // Category order stored in localStorage
@@ -645,7 +645,7 @@ function itemHTML(a, color) {
 
   return `
     <div class="item-wrap" data-id="${a.id}">
-      <div class="item-delete-bg" onclick="confirmDelete('${a.id}')">\u1F5D1\uFE0F Supprimer</div>
+      <div class="item-delete-bg" onclick="confirmDelete('${a.id}')">\u{1F5D1}\uFE0F Supprimer</div>
       <div class="item-row${a.coche ? ' checked' : ''}" id="row-${a.id}">
         <div class="item-check${a.coche ? ' on' : ''}"
              onclick="toggle('${a.id}',${!a.coche})">${a.coche ? '\u2713' : ''}</div>
@@ -777,7 +777,7 @@ window.confirmDelete = async (id) => {
 };
 
 window.confirmReset = () => {
-  if (!confirm('D\u00E9cocher tous les articles et remettre les quantit\u00E9s \u00E0 1 ?')) return;
+  if (!confirm('D\u{00E9c}ocher tous les articles et remettre les quantit\u00E9s \u00E0 1 ?')) return;
   articles.forEach(a => updateDoc(doc(db, 'articles', a.id), { coche: false, quantite: 1 }));
 };
 
@@ -839,7 +839,7 @@ window.analyzeReceipt = async (e) => {
           role: 'user',
           content: [
             { type: 'image', source: { type: 'base64', media_type: file.type, data: b64 } },
-            { type: 'text', text: `Voici un ticket de caisse fran\u00E7ais. Liste chaque article alimentaire ou m\u00E9nager avec son prix unitaire.
+            { type: 'text', text: `Voici un ticket de caisse fran\u{00E7a}is. Liste chaque article alimentaire ou m\u00E9nager avec son prix unitaire.
 R\u00E9ponds UNIQUEMENT avec un JSON valide, rien d'autre :
 [{"nom":"...","prix":0.00,"categorie":"frais|epicerie|boucherie|surgeles|boissons|hygiene|animaux|autres"}]
 Ignore ces articles d\u00E9j\u00E0 connus : ${known || 'aucun'}.
