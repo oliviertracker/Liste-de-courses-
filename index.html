@@ -359,9 +359,12 @@ window.analyzeReceipt=async e=>{
     });
     if(!res.ok)throw new Error('Erreur API '+res.status);
     const json=await res.json();
-    let items; try{items=JSON.parse(json.content[0].text.trim());}catch{items=[];}
+    let raw=(json.content&&json.content[0]&&json.content[0].text)||'';
+    raw=raw.trim().replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim();
+    let items; try{items=JSON.parse(raw);}catch{items=[];}
+    if(!Array.isArray(items))items=[];
     foundItems=items;
-    if(!items.length){setStatus('Aucun nouvel article d\u00E9tect\u00E9.');return;}
+    if(!items.length){setStatus('Aucun nouvel article d\u00E9tect\u00E9.<br><small style="color:#bbb">R\u00E9ponse : '+esc(raw.slice(0,120))+'</small>');return;}
     setStatus('');
     const el=document.getElementById('scan-results');
     el.innerHTML='<div style="font-weight:600;margin-bottom:8px">'+items.length+' article(s) d\u00E9tect\u00E9(s) :</div>'
