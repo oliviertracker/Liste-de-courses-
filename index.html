@@ -349,9 +349,9 @@ window.analyzeReceipt=async e=>{
   try{
     const b64=await compressImage(file);
     const known=articles.map(a=>a.nom.toLowerCase()).join(', ');
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('https://anthropic-proxy.olivogenod.workers.dev',{
       method:'POST',
-      headers:{'x-api-key':apiKey,'anthropic-version':'2023-06-01','content-type':'application/json','anthropic-dangerous-allow-browser':'true'},
+      headers:{'x-api-key':apiKey,'content-type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1024,messages:[{role:'user',content:[
         {type:'image',source:{type:'base64',media_type:'image/jpeg',data:b64}},
         {type:'text',text:'Voici un ticket de caisse francais. Reponds UNIQUEMENT avec un JSON valide :\n[{"nom":"...","prix":0.00,"categorie":"frais|epicerie|boucherie|surgeles|boissons|hygiene|animaux|autres"}]\nIgnore ces articles : '+known+'.\nSi illisible, reponds [].'}
